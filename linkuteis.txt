@@ -1,0 +1,8 @@
+baixar transcricao do youtube via comandos do terminal
+https://github.com/yt-dlp/yt-dlp
+
+biblioteca em python para baixar transcricoes
+https://pypi.org/project/youtube-transcript-api
+
+api do youtube
+https://console.cloud.google.com/apis/library/youtube.googleapis.com?hl=pt-br&project=possible-cycle-390613
