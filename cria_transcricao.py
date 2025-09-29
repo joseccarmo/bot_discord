@@ -1,5 +1,6 @@
 from youtube_transcript_api import YouTubeTranscriptApi
 import re
+import unicodedata
 from urllib.parse import urlparse, parse_qs
 import yt_dlp
 
@@ -50,9 +51,9 @@ for id_video in primeiros_ids:
 
 i = 0
 
-while i <= len(id_video):
+while i <= len(primeiros_ids):
 
-    codigo =  id_video
+    codigo =  primeiros_ids[i]
     ytt_api = YouTubeTranscriptApi().fetch(video_id=codigo, languages=['pt']) # chamada da trancriçao
 
     list_snippets = []
@@ -62,13 +63,13 @@ while i <= len(id_video):
         if snippet.text[0] == '[':
             continue
         else:
-            list_snippets.append(snippet.text)
+            list_snippets.append(unicodedata.normalize('NFKD', snippet.text))
 
     text_snippets = ' '.join(list_snippets)
     frases_snippets = re.split(r'(?<=[.!?])\s+', text_snippets)
 
     # Imprime a lista de frases, cada uma em uma nova linha para melhor visualização.
-    print(frases_snippets)
+    #print(frases_snippets)
 
     # --- 2. PREPARAÇÃO DO DATASET ---
     # O Trainer do Hugging Face funciona melhor com arquivos.
