@@ -15,7 +15,7 @@ import os
 # AQUI ESTÁ A MUDANÇA PRINCIPAL:
 # Em vez de um único arquivo, passamos um padrão (wildcard) para carregar
 # todos os arquivos .txt que estão dentro da pasta 'transcricao'.
-caminho_dos_arquivos = "transcricao/*.txt"
+caminho_dos_arquivos = "bot_discord/transcricao/transcricao_SKDi6D5NNRA.txt"
 
 # A biblioteca 'datasets' vai ler todos os arquivos que correspondem ao padrão
 # e tratá-los como um único grande dataset. É muito eficiente.
@@ -79,7 +79,7 @@ trainer.save_model(final_model_path)
 tokenizer.save_pretrained(final_model_path)
 print(f"Modelo final salvo em: {final_model_path}")
 
-prompt_inicial = "Na minha opinião, a coisa mais importante sobre código é"
+prompt_inicial = "O que é um Atlas?"
 inputs = tokenizer(prompt_inicial, return_tensors="pt").to(model.device)
 outputs = model.generate(**inputs, max_new_tokens=50, num_return_sequences=1)
 generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)

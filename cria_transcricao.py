@@ -3,6 +3,7 @@ import re
 import unicodedata
 from urllib.parse import urlparse, parse_qs
 import yt_dlp
+import os
 
 def obter_ids_corrigidos_yt_dlp(url_canal: str, limite: int) -> list[str]:
     """
@@ -71,6 +72,7 @@ while i <= len(primeiros_ids):
     # Imprime a lista de frases, cada uma em uma nova linha para melhor visualização.
     #print(frases_snippets)
 
+
     # --- 2. PREPARAÇÃO DO DATASET ---
     # O Trainer do Hugging Face funciona melhor com arquivos.
     # Vamos salvar nossa lista de frases em um arquivo .txt.
@@ -80,4 +82,5 @@ while i <= len(primeiros_ids):
         f.write("\n\n".join(frases_snippets))
 
     print(f"Dataset salvo em '{nome_do_arquivo_dataset}'")
+
     i += 1
